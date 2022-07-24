@@ -52,7 +52,7 @@ class SignUpViewModel(private val repository: UserRepository): BaseViewModel() {
                     val icNo: Int = nric.value!!
                     val password: String = md5Hash(passwd.value!!)
                     val user = User(0,userName,icNo,password)
-                    repository.register(user)
+                    register(user)
                     fullName.value = null
                     nric.value = null
                     passwd.value = null
@@ -68,13 +68,12 @@ class SignUpViewModel(private val repository: UserRepository): BaseViewModel() {
             repository.register(user)
         }
 }
-class UserViewModelFactory(
-    private  val repository: UserRepository): ViewModelProvider.Factory{
-    @Suppress("Unchecked_cast")
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+class Provider(private val repository: UserRepository): ViewModelProvider.Factory {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if(modelClass.isAssignableFrom(SignUpViewModel::class.java)) {
             return SignUpViewModel(repository) as T
         }
-        throw IllegalArgumentException("Unknown View Model Class")
+
+        throw IllegalArgumentException("Invalid ViewModel")
     }
 }

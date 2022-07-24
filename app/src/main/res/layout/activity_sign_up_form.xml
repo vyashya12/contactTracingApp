@@ -5,7 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="viewModel"
+            type="com.example.contacttracingproject.registration.SignUpViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -52,6 +54,7 @@
             android:backgroundTint="@color/form_offwhite"
             android:ems="10"
             android:hint="@string/name"
+            android:text="@{viewModel.fullName}"
             android:inputType="textPersonName"
             android:padding="15dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -69,6 +72,7 @@
             android:backgroundTint="@color/form_offwhite"
             android:ems="10"
             android:hint="@string/ic"
+            android:text="@{viewModel.nric}"
             android:inputType="number"
             android:padding="15dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -86,6 +90,7 @@
             android:backgroundTint="@color/form_offwhite"
             android:ems="10"
             android:hint="@string/password"
+            android:text="@{viewModel.passwd}"
             android:inputType="textPassword"
             android:padding="15dp"
             app:layout_constraintEnd_toEndOf="parent"

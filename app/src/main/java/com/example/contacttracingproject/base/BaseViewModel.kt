@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.example.contacttracingproject.data.User
 
 abstract class BaseViewModel: ViewModel() {
+
     val fullName = MutableLiveData<String>()
 
     val nric = MutableLiveData<Int>()

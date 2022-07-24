@@ -18,22 +18,27 @@ import com.example.contacttracingproject.databinding.ActivitySignUpFormBinding
 //Sign Up form activity
 class SignUpForm : AppCompatActivity() {
     private lateinit var binding: ActivitySignUpFormBinding
-    private lateinit var viewModel: SignUpViewModel
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_sign_up_form)
-        viewModel = ViewModelProvider(this).get(SignUpViewModel::class.java)
+        val viewModel: SignUpViewModel by lazy {
+            ViewModelProvider(this).get(SignUpViewModel::class.java)
+        }
 
         binding.buttonSignUp.setOnClickListener{
+            Log.i("icNo", "Hello")
             if(binding.editTextPassword.text.toString() != binding.editTextPassword2.text.toString()) {
                 Toast.makeText(this, "Passwords do not Match", Toast.LENGTH_SHORT).show()
             } else {
                 viewModel.fullName.value = binding.editTextPersonName.text.toString()
                 viewModel.nric.value = binding.editTextIDNumber.text.toString().toInt()
                 viewModel.passwd.value = binding.editTextPassword.text.toString()
-                Log.i("icNo", viewModel.nric.value.toString())
+
+                Log.i("icNo", viewModel.fullName.value.toString())
                 viewModel.registering()
+                                Log.i("icNo", "It hits")
+                val intent = Intent(this, LoginForm::class.java)
+                startActivity(intent)
             }
         }
     }
