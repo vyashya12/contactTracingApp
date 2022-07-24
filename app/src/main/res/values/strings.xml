@@ -1,0 +1,84 @@
+<resources>
+    <string name="app_name">ContactTracingProject</string>
+<!--     TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="reset">Reset Password</string>
+    <string name="password">Password</string>
+    <string name="retype">Retype Password</string>
+    <string name="change">Change Password</string>
+    <string name="health">Health Status</string>
+    <string name="question">Question</string>
+    <string name="answer">Answer</string>
+    <string name="submit">Submit</string>
+    <string name="login">Login To Your Account</string>
+    <string name="ic">IC/ID No</string>
+    <string name="forgot">Forgot Password?</string>
+    <string name="log">Login</string>
+    <string name="desc">CoroLo Logo</string>
+    <string name="welcome">Welcome to CoroLo!</string>
+    <string name="plsLog">Please Login</string>
+    <string name="noAcc">Don\'t have an account?</string>
+    <string name="sign">Sign Up</string>
+    <string name="loginGoo">Login with Apple</string>
+    <string name="logFace">Login with FaceBook</string>
+    <string name="logGoogle">Login with Google</string>
+    <string name="create">Create Account</string>
+    <string name="name">Name Surname</string>
+    <string name="location">Your Location History</string>
+    <string name="update">Update Health Status</string>
+    <string name="user">Your User Profile</string>
+    <string name="risk">Individual Risk Level</string>
+    <string name="username">User\'s Name</string>
+    <string name="stats">Statistics</string>
+    <string name="global">Global</string>
+    <string name="malaysia">Malaysia</string>
+    <string name="sam">Samuel Cheong Tjen-Yang</string>
+    <string name="phone">012345678910</string>
+    <string name="riskStatus">COVID-19 Risk Status</string>
+    <string name="status">Low Risk Individual</string>
+    <string name="vaccination">Vaccination Status</string>
+    <string name="fully">Fully Vaccinated</string>
+    <string name="useric">User Icon</string>
+    <string name="icno">IC/ID: 012345678910</string>
+    <string name="age">Age: User\'s age</string>
+    <string name="town">Location: Town/City, State</string>
+    <string name="digital">Digital Vaccination Certificate</string>
+    <string name="globe">Globe Image</string>
+    <string name="cases">Cases:\n\nRecovered:\n\nDeaths:</string>
+    <string name="vals">123456789\n\n123456789\n\n123456789</string>
+    <string name="tempText">This is some temp text</string>
+    <string name="location_name">Location Name</string>
+    <string name="address">Address</string>
+    <string name="date">Date</string>
+    <string name="time">Time</string>
+    <string-array name="address">
+        <item>Prangin Mall</item>
+        <item>Gurney Paragon</item>
+        <item>Gurney Plaza</item>
+        <item>Gurney Plaza</item>
+        <item>Gurney Plaza</item>
+        <item>Gurney Plaza</item>
+        <item>Gurney Plaza</item>
+        <item>Gurney Plaza</item>
+    </string-array>
+    <string-array name="time">
+        <item>11.30pm</item>
+        <item>12.00am</item>
+        <item>10.00am</item>
+        <item>3.00pm</item>
+        <item>5.00pm</item>
+        <item>5.00pm</item>
+        <item>5.00pm</item>
+        <item>5.00pm</item>
+    </string-array>
+    <string-array name="date">
+        <item>12/12/2022</item>
+        <item>26/06/1996</item>
+        <item>11/05/2003</item>
+        <item>03/01/2003</item>
+        <item>03/01/2003</item>
+        <item>03/01/2003</item>
+        <item>03/01/2003</item>
+        <item>03/01/2003</item>
+    </string-array>
+</resources>

@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".home.HealthForm">
+
+<!--    Health status questions and answer radioGroup-->
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/health"
+        android:textColor="@color/corolo"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:clipToPadding="false"
+        app:layout_constraintTop_toBottomOf="@+id/textView11">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/question"
+            android:textColor="@color/corolo"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:paddingBottom="15dp"
+            android:paddingTop="15dp"
+            android:layout_marginStart="64dp"
+            android:layout_marginEnd="64dp"
+            android:layout_gravity="center"
+            android:elevation="10dp"
+            android:background="@drawable/health"/>
+
+<!--        RadioGroup for RadioButtons-->
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_marginTop="20dp"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:textColor="@color/corolo"
+                android:background="@drawable/health"
+                android:textAlignment="center"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="48dp"
+                android:layout_marginEnd="48dp"
+                android:layout_marginBottom="20dp"
+                android:elevation="10dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:text="@string/answer" />
+
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:textColor="@color/corolo"
+                android:background="@drawable/health"
+                android:textAlignment="center"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="48dp"
+                android:layout_marginEnd="48dp"
+                android:layout_marginBottom="20dp"
+                android:elevation="10dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:text="@string/answer" />
+
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:textColor="@color/corolo"
+                android:background="@drawable/health"
+                android:textAlignment="center"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="48dp"
+                android:layout_marginEnd="48dp"
+                android:layout_marginBottom="20dp"
+                android:elevation="10dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:text="@string/answer" />
+
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:textColor="@color/corolo"
+                android:background="@drawable/health"
+                android:textAlignment="center"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="48dp"
+                android:layout_marginEnd="48dp"
+                android:layout_marginBottom="20dp"
+                android:elevation="10dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:text="@string/answer" />
+
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:textColor="@color/corolo"
+                android:background="@drawable/health"
+                android:textAlignment="center"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="48dp"
+                android:layout_marginEnd="48dp"
+                android:layout_marginBottom="20dp"
+                android:elevation="10dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:text="@string/answer" />
+        </RadioGroup>
+    </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/corolo"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:text="@string/submit"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

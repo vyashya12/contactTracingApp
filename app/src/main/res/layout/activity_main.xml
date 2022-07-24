@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#eee"
+    android:elevation="5dp"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="250dp"
+        android:layout_height="90dp"
+        android:layout_marginTop="56dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/desc"
+        android:src="@drawable/corolo_login" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="81dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="111dp"
+        android:text="@string/welcome"
+        android:textColor="#0623d8"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="81dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="191dp"
+        android:text="@string/plsLog"
+        android:textColor="@color/corolo"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="116dp"
+        android:layout_marginBottom="56dp"
+        android:text="@string/noAcc"
+        android:textColor="@color/corolo"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/sign"
+        android:onClick="SignUp"
+        android:textColor="@color/corolo"
+        android:textSize="14sp"
+        android:textStyle="normal"
+        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintTop_toTopOf="@+id/textView" />
+
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="64dp"
+        android:background="@drawable/btn_rounded"
+        android:backgroundTint="@color/corolo"
+        android:elevation="5dp"
+        android:paddingTop="25dp"
+        android:paddingBottom="25dp"
+        android:shadowColor="@color/corolo"
+        android:shadowDx="@integer/material_motion_duration_long_1"
+        android:text="@string/log"
+        android:onClick="LoginForm"
+        android:textAllCaps="false"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/button1"
+        app:layout_constraintBottom_toTopOf="@+id/button3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <View
+            android:layout_width="100dp"
+            android:layout_height="1dp"
+            android:layout_marginEnd="5dp"
+            android:layout_gravity="center"
+            android:background="@color/corolo"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="or"
+            android:textColor="@color/corolo"
+            android:textStyle="bold"
+            />
+
+        <View
+            android:layout_width="100dp"
+            android:layout_height="1dp"
+            android:layout_marginStart="5dp"
+            android:layout_gravity="center"
+            android:background="@color/corolo"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="64dp"
+        android:background="@drawable/btn_rounded"
+        android:backgroundTint="@color/corolo"
+        android:elevation="5dp"
+        android:paddingTop="25dp"
+        android:paddingBottom="25dp"
+        android:shadowColor="@color/corolo"
+        android:shadowDx="@integer/material_motion_duration_long_1"
+        android:text="@string/loginGoo"
+        android:drawableLeft="@drawable/ic_action_apple"
+        android:paddingLeft="30dp"
+        android:paddingRight="20dp"
+        android:textAllCaps="false"
+        android:textStyle="normal"
+        app:circularflow_radiusInDP="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button4" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="64dp"
+        android:background="@drawable/btn_rounded"
+        android:backgroundTint="@color/corolo"
+        android:elevation="5dp"
+        android:paddingTop="25dp"
+        android:paddingBottom="25dp"
+        android:shadowColor="@color/corolo"
+        android:shadowDx="@integer/material_motion_duration_long_1"
+        android:text="@string/logFace"
+        android:drawableLeft="@drawable/ic_action_facebook"
+        android:paddingLeft="30dp"
+        android:paddingRight="20dp"
+        android:textAllCaps="false"
+        android:textStyle="normal"
+        app:circularflow_radiusInDP="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button3" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="64dp"
+        android:background="@drawable/btn_rounded"
+        android:backgroundTint="@color/corolo"
+        android:elevation="5dp"
+        android:paddingTop="25dp"
+        android:paddingBottom="25dp"
+        android:shadowColor="@color/corolo"
+        android:shadowDx="@integer/material_motion_duration_long_1"
+        android:text="@string/logGoogle"
+        android:drawableLeft="@drawable/ic_action_google"
+        android:paddingLeft="30dp"
+        android:paddingRight="20dp"
+        android:textAllCaps="false"
+        android:textStyle="normal"
+        app:circularflow_radiusInDP="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button1" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".stats.Statistics">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/statistics_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="60dp"
+                android:text="@string/stats"
+                android:textColor="@color/corolo"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/statistics_global"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/statistics_title">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:background="@drawable/statistics_global_card"
+                    android:padding="30dp"
+                    >
+
+                    <ImageView
+                        android:id="@+id/statistics_globe"
+                        android:layout_width="84dp"
+                        android:layout_height="84dp"
+                        android:layout_gravity="center_horizontal"
+                        android:contentDescription="@string/globe"
+                        android:src="@drawable/globe" />
+
+                    <TextView
+                        android:id="@+id/statistics_global_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="@string/global"
+                        android:textColor="@color/corolo"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal">
+
+                        <TextView
+                            android:id="@+id/statistics_global_categories"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="20dp"
+                            android:text="@string/cases" />
+
+                        <TextView
+                            android:id="@+id/statistics_global_numbers"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/vals" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/statistics_national"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/statistics_global">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:background="@drawable/statistics_national_card"
+                    android:padding="30dp"
+                    android:layout_marginBottom="50dp">
+
+                    <ImageView
+                        android:id="@+id/statistics_malaysia"
+                        android:layout_width="84dp"
+                        android:layout_height="84dp"
+                        android:layout_gravity="center_horizontal"
+                        android:src="@drawable/malaysia"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:contentDescription="@string/malaysia"
+                        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+                    <TextView
+                        android:id="@+id/statistics_national_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="@string/malaysia"
+                        android:textColor="#0623d8"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/statistics_national_categories"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="20dp"
+                            android:text="@string/cases" />
+
+                        <TextView
+                            android:id="@+id/statistics_national_numbers"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/vals" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+</FrameLayout>
