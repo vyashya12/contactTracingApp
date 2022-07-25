@@ -9,11 +9,11 @@ class UserRepository(private val dao: UserDAO) {
         return userList
     }
 
-    suspend fun register(user: User) {
+    fun register(user: User) {
         dao.register(user)
     }
 
-    suspend fun login(fullName: String): User {
+    fun login(fullName: String): User {
         return dao.login(fullName)
     }
 }
