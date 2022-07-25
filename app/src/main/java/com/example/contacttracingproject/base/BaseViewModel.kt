@@ -6,13 +6,11 @@ import androidx.databinding.Observable
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.contacttracingproject.data.User
-import com.example.contacttracingproject.data.UserRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 
-abstract class BaseViewModel(application: Application): AndroidViewModel(application),
+abstract class BaseViewModel(): ViewModel(),
     Observable {
 
     protected val viewModelJob = Job()

@@ -6,12 +6,11 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.contacttracingproject.data.UserRepository
 
 class SignUpViewModelfactory(
-        private  val repository: UserRepository,
-        private val application: Application): ViewModelProvider.Factory{
+        private  val repository: UserRepository): ViewModelProvider.Factory{
         @Suppress("Unchecked_cast")
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
             if(modelClass.isAssignableFrom(SignUpViewModel::class.java)) {
-                return SignUpViewModel(repository, application) as T
+                return SignUpViewModel(repository) as T
             }
             throw IllegalArgumentException("Unknown View Model Class")
         }

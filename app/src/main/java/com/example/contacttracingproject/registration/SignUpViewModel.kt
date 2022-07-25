@@ -2,6 +2,7 @@ package com.example.contacttracingproject.registration
 
 import android.app.Application
 import android.content.Intent
+import android.util.Log
 import androidx.databinding.Observable
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModel
@@ -15,7 +16,7 @@ import java.math.BigInteger
 import java.security.MessageDigest
 import java.util.regex.Pattern
 
-class SignUpViewModel(private val repository: UserRepository, application: Application): BaseViewModel(application){
+class SignUpViewModel(private val repository: UserRepository): BaseViewModel(){
 
     fun validate(input: String): Boolean {
         val PATTERN: Pattern =
@@ -43,6 +44,9 @@ class SignUpViewModel(private val repository: UserRepository, application: Appli
                 (passwd.value == null) ||
                 (!validate(fullName.value.toString())) ||
             (!validate(passwd.value.toString()))) {
+            Log.i("icNo", fullName.value.toString())
+            Log.i("icNo1", nric.value.toString() )
+            Log.i("icNo2", passwd.value.toString())
             _errorToast.value = true
         } else {  // register
             uiScope.launch {

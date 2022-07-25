@@ -72,7 +72,7 @@
             android:backgroundTint="@color/form_offwhite"
             android:ems="10"
             android:hint="@string/ic"
-            android:text="@{viewModel.nric}"
+            android:text="@{Integer.toString(viewModel.nric)}"
             android:inputType="number"
             android:padding="15dp"
             app:layout_constraintEnd_toEndOf="parent"
