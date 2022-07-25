@@ -1,6 +1,9 @@
 package com.example.contacttracingproject.registration
 
+import android.app.Application
 import android.content.Intent
+import androidx.databinding.Observable
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
@@ -12,17 +15,14 @@ import java.math.BigInteger
 import java.security.MessageDigest
 import java.util.regex.Pattern
 
-class SignUpViewModel(private val repository: UserRepository): BaseViewModel() {
-
-    private val viewModelJob = Job()
-    private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
+class SignUpViewModel(private val repository: UserRepository, application: Application): BaseViewModel(application){
 
     fun validate(input: String): Boolean {
         val PATTERN: Pattern =
             Pattern.compile("^" +
-                    "(?=.*[@#$%^&+=])" +     // at least 1 special character
-                    "(?=\\S+$)" +            // no white spaces
-                    ".{6,}" +                // at least 6 characters
+                    "(?=.*[@#$%^&+=])" +
+                    "(?=\\S+$)" +
+                    ".{6,}" +
                     "$")
 
         return PATTERN.matcher(input).matches()
@@ -67,13 +67,4 @@ class SignUpViewModel(private val repository: UserRepository): BaseViewModel() {
         viewModelScope.launch(Dispatchers.IO) {
             repository.register(user)
         }
-}
-class Provider(private val repository: UserRepository): ViewModelProvider.Factory {
-    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if(modelClass.isAssignableFrom(SignUpViewModel::class.java)) {
-            return SignUpViewModel(repository) as T
-        }
-
-        throw IllegalArgumentException("Invalid ViewModel")
-    }
 }
