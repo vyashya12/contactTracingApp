@@ -39,27 +39,27 @@ class SignUpViewModel(private val repository: UserRepository): BaseViewModel(){
         return hashedPassword
     }
     fun registering() {  // Empty field and validate username and password
+        Log.i("icNo", fullName.value.toString())
+        Log.i("icNo1", nric.value.toString())
+        Log.i("icNo2", passwd.value.toString())
         if((fullName.value == null) ||
                 (nric.value == null) ||
                 (passwd.value == null) ||
                 (!validate(fullName.value.toString())) ||
             (!validate(passwd.value.toString()))) {
-            Log.i("icNo", fullName.value.toString())
-            Log.i("icNo1", nric.value.toString() )
-            Log.i("icNo2", passwd.value.toString())
             _errorToast.value = true
         } else {  // register
             uiScope.launch {
                 val userInfo = repository.login(fullName.value.toString())
                 if(userInfo == null) {  // No existing record with the same username
                     val userName: String = fullName.value!!
-                    val icNo: Int = nric.value!!
+                    val icNo: String = nric.value!!
                     val password: String = md5Hash(passwd.value!!)
                     val user = User(0,userName,icNo,password)
                     register(user)
-                    fullName.value = null
-                    nric.value = null
-                    passwd.value = null
+//                    fullName.value = null
+//                    nric.value = null
+//                    passwd.value = null
                 } else {
                     _errorToastUserName.value = true
                 }

@@ -13,7 +13,7 @@ data class User (
         val fullName: String,
 
         @ColumnInfo(name = "nric")
-        val nric: Int,
+        val nric: String,
 
         @ColumnInfo(name = "password")
         val password: String

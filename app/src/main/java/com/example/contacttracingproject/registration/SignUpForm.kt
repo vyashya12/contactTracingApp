@@ -40,14 +40,14 @@ class SignUpForm : AppCompatActivity() {
 
         binding.lifecycleOwner = this
 
-        signUpViewModel._errorToast.observe(this, Observer {
+        signUpViewModel.errorToast.observe(this, Observer {
             hasError ->
             if(hasError == true) {
                 Toast.makeText(this, "Invalid Input fields", Toast.LENGTH_SHORT).show()
             }
         })
 
-        signUpViewModel._errorToastUserName.observe(this, Observer {
+        signUpViewModel.errorToastUserName.observe(this, Observer {
             userNameExists ->
             if(userNameExists == true) {
                 Toast.makeText(this, "Username already exists", Toast.LENGTH_SHORT).show()
@@ -56,6 +56,7 @@ class SignUpForm : AppCompatActivity() {
 
         binding.buttonSignUp.setOnClickListener{
             signUpViewModel.registering()
+            Log.i("icNo4", signUpViewModel.fullName.value.toString())
         }
     }
 }
