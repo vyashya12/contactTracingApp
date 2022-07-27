@@ -34,6 +34,10 @@ abstract class BaseViewModel(): ViewModel(),
     val errorToastUserName: LiveData<Boolean>
         get() = _errorToastUserName
 
+    val _errorToastPassword = MutableLiveData<Boolean>(false)
+    val errorToastPassword: LiveData<Boolean>
+        get() = _errorToastPassword
+
     override fun removeOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) {
 
     }

@@ -43,8 +43,8 @@ class SignUpViewModel(private val repository: UserRepository): BaseViewModel(){
         Log.i("icNo1", nric.value.toString())
         Log.i("icNo2", passwd.value.toString())
         if((fullName.value.isNullOrEmpty()) ||
-                (nric.value == null) ||
-                (passwd.value == null) ||
+                (nric.value.isNullOrEmpty()) ||
+                (passwd.value.isNullOrEmpty()) ||
             (!validate(passwd.value.toString()))) {
             _errorToast.value = true
             Log.i("icNo6", "Spmething is still trruue")
@@ -57,9 +57,9 @@ class SignUpViewModel(private val repository: UserRepository): BaseViewModel(){
                     val password: String = md5Hash(passwd.value!!)
                     val user = User(0,userName,icNo,password)
                     register(user)
-//                    fullName.value = null
-//                    nric.value = null
-//                    passwd.value = null
+                    fullName.value = null
+                    nric.value = null
+                    passwd.value = null
                 } else {
                     _errorToastUserName.value = true
                 }
