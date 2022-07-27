@@ -39,9 +39,6 @@ class SignUpViewModel(private val repository: UserRepository): BaseViewModel(){
         return hashedPassword
     }
     fun registering() {  // Empty field and validate username and password
-        Log.i("icNo", fullName.value.toString())
-        Log.i("icNo1", nric.value.toString())
-        Log.i("icNo2", passwd.value.toString())
         if((fullName.value.isNullOrEmpty()) ||
                 (nric.value.isNullOrEmpty()) ||
                 (passwd.value.isNullOrEmpty()) ||

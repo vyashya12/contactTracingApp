@@ -58,16 +58,22 @@ class LoginForm : AppCompatActivity() {
 
         binding.button.setOnClickListener {
             loginFormViewModel.login()
-            SweetAlertDialog(this, SweetAlertDialog.SUCCESS_TYPE)
-                .setTitleText("Login Successful").setConfirmClickListener {
-                    val intent = Intent(this, HomeActivity::class.java)
-                    startActivity(intent)
-                }
-                .show()
+            if (loginFormViewModel._errorToast.value === false &&
+                loginFormViewModel._errorToastUserName.value === false &&
+                loginFormViewModel._errorToastPassword.value === false
+            ) {
+                SweetAlertDialog(this, SweetAlertDialog.SUCCESS_TYPE)
+                    .setTitleText("Login Successful").setConfirmClickListener {
+                        val intent = Intent(this, HomeActivity::class.java)
+                        startActivity(intent)
+                        finish()
+                    }
+                    .show()
+            }
         }
     }
 
-//    Onclick opens the Password reset screen
+    //    Onclick opens the Password reset screen
     fun ResetPassword(view: View) {
         val i = Intent(this, ForgotForm::class.java)
         startActivity(i)

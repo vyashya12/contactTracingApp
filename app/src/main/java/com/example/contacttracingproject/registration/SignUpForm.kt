@@ -56,9 +56,9 @@ class SignUpForm : AppCompatActivity() {
 
         binding.buttonSignUp.setOnClickListener {
             signUpViewModel.registering()
-            if (signUpViewModel.errorToast.value == false &&
-                signUpViewModel.errorToastUserName.value == false &&
-                signUpViewModel.errorToastPassword.value == false
+            if (signUpViewModel._errorToast.value == false &&
+                signUpViewModel._errorToastUserName.value == false &&
+                signUpViewModel._errorToastPassword.value == false
             ) {
                 SweetAlertDialog(this, SweetAlertDialog.SUCCESS_TYPE)
                     .setTitleText("Register Successful").setConfirmClickListener {

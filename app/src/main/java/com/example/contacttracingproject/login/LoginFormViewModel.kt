@@ -30,6 +30,9 @@ class LoginFormViewModel(private val repository: UserRepository): BaseViewModel(
                 if(user != null) {
                     if(user.password == md5Hash(passwd.value.toString())) {  // valid user with correct password
                         passwd.value = null
+                        _errorToastUserName.value = false
+                        _errorToast.value = false
+                        _errorToastPassword.value = false
                     } else {   // invalid password
                         _errorToastPassword.value = true
                     }
