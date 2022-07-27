@@ -48,14 +48,25 @@ class SignUpForm : AppCompatActivity() {
             }
         })
 
+        signUpViewModel.errorToastPassword.observe(this, Observer { passwordMatches ->
+            if (passwordMatches == true) {
+                Toast.makeText(this, "Passwords do not Match", Toast.LENGTH_SHORT).show()
+            }
+        })
+
         binding.buttonSignUp.setOnClickListener {
             signUpViewModel.registering()
-            SweetAlertDialog(this, SweetAlertDialog.SUCCESS_TYPE)
-                .setTitleText("Register Successful").setConfirmClickListener {
-                    val intent = Intent(this, LoginForm::class.java)
-                    startActivity(intent)
-                }
-                .show()
+            if (signUpViewModel.errorToast.value == false &&
+                signUpViewModel.errorToastUserName.value == false &&
+                signUpViewModel.errorToastPassword.value == false
+            ) {
+                SweetAlertDialog(this, SweetAlertDialog.SUCCESS_TYPE)
+                    .setTitleText("Register Successful").setConfirmClickListener {
+                        val intent = Intent(this, LoginForm::class.java)
+                        startActivity(intent)
+                    }
+                    .show()
+            }
         }
     }
 }

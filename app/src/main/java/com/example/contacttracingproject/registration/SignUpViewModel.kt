@@ -47,7 +47,8 @@ class SignUpViewModel(private val repository: UserRepository): BaseViewModel(){
                 (passwd.value.isNullOrEmpty()) ||
             (!validate(passwd.value.toString()))) {
             _errorToast.value = true
-            Log.i("icNo6", "Spmething is still trruue")
+        } else if(passwd.value != passwd2.value) {
+            _errorToastPassword.value = true
         } else {  // register
             viewModelScope.launch {
                 val userInfo = repository.login(fullName.value.toString())
@@ -60,6 +61,10 @@ class SignUpViewModel(private val repository: UserRepository): BaseViewModel(){
                     fullName.value = null
                     nric.value = null
                     passwd.value = null
+                    passwd2.value = null
+                    _errorToast.value = false
+                    _errorToastPassword.value = false
+                    _errorToastUserName.value = false
                 } else {
                     _errorToastUserName.value = true
                 }

@@ -26,6 +26,9 @@ abstract class BaseViewModel(): ViewModel(),
     @Bindable
     val passwd = MutableLiveData<String>()
 
+    @Bindable
+    val passwd2 = MutableLiveData<String>()
+
     val _errorToast = MutableLiveData<Boolean>(false)
     val errorToast: LiveData<Boolean>
         get() = _errorToast
