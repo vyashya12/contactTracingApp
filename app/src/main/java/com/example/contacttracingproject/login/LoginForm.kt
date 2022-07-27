@@ -39,19 +39,19 @@ class LoginForm : AppCompatActivity() {
         binding.lifecycleOwner = this
 
         loginFormViewModel.errorToast.observe(this, Observer { hasError ->
-            if (hasError == true) {
+            if (hasError) {
                 Toast.makeText(this, "Invalid Input fields", Toast.LENGTH_SHORT).show()
             }
         })
 
         loginFormViewModel.errorToastUserName.observe(this, Observer { userNameExists ->
-            if (userNameExists == true) {
+            if (userNameExists) {
                 Toast.makeText(this, "Username does not exist", Toast.LENGTH_SHORT).show()
             }
         })
 
         loginFormViewModel.errorToastPassword.observe(this, Observer { passwordInvalid ->
-            if (passwordInvalid == true) {
+            if (passwordInvalid) {
                 Toast.makeText(this, "Invalid Password", Toast.LENGTH_SHORT).show()
             }
         })
