@@ -13,7 +13,7 @@ class UserRepository(private val dao: UserDAO) {
         dao.register(user)
     }
 
-    fun login(fullName: String): User {
+    suspend fun login(fullName: String): User {
         return dao.login(fullName)
     }
 }

@@ -38,9 +38,10 @@ android {
 
 dependencies {
 
-    def room_version = "2.2.5"
+    def room_version = "2.5.0-alpha02"
     def lifecycle_version = "2.2.0"
     implementation "androidx.room:room-runtime:$room_version"
+    kapt "org.xerial:sqlite-jdbc:3.36.0"
     kapt "androidx.room:room-compiler:$room_version"
     // ViewModel
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"

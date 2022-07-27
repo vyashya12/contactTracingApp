@@ -42,14 +42,14 @@ class SignUpViewModel(private val repository: UserRepository): BaseViewModel(){
         Log.i("icNo", fullName.value.toString())
         Log.i("icNo1", nric.value.toString())
         Log.i("icNo2", passwd.value.toString())
-        if((fullName.value == null) ||
+        if((fullName.value.isNullOrEmpty()) ||
                 (nric.value == null) ||
                 (passwd.value == null) ||
-                (!validate(fullName.value.toString())) ||
             (!validate(passwd.value.toString()))) {
             _errorToast.value = true
+            Log.i("icNo6", "Spmething is still trruue")
         } else {  // register
-            uiScope.launch {
+            viewModelScope.launch {
                 val userInfo = repository.login(fullName.value.toString())
                 if(userInfo == null) {  // No existing record with the same username
                     val userName: String = fullName.value!!

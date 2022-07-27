@@ -26,11 +26,11 @@ abstract class BaseViewModel(): ViewModel(),
     @Bindable
     val passwd = MutableLiveData<String>()
 
-    val _errorToast = MutableLiveData<Boolean>()
+    val _errorToast = MutableLiveData<Boolean>(false)
     val errorToast: LiveData<Boolean>
         get() = _errorToast
 
-    val _errorToastUserName = MutableLiveData<Boolean>()
+    val _errorToastUserName = MutableLiveData<Boolean>(false)
     val errorToastUserName: LiveData<Boolean>
         get() = _errorToastUserName
 

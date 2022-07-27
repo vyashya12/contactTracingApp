@@ -11,7 +11,7 @@ interface UserDAO {
     fun register(user: User)
 
     @Query("SELECT * FROM userTable WHERE fullName =:fullName")
-    fun login(fullName: String): User
+    suspend fun login(fullName: String): User
 
     @Query("SELECT * FROM userTable ORDER BY id DESC")
     fun getAllUsers(): Flow<List<User>>
