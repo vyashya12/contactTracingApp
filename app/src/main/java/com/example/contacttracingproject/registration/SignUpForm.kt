@@ -45,6 +45,7 @@ class SignUpForm : AppCompatActivity() {
         signUpViewModel.errorToastUserName.observe(this, Observer { userNameExists ->
             if (userNameExists == true) {
                 Toast.makeText(this, "Username already exists", Toast.LENGTH_SHORT).show()
+                //Hi yoj
             }
         })
 
