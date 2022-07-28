@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.asLiveData
 import cn.pedant.SweetAlert.SweetAlertDialog
 import com.example.contacttracingproject.home.HomeActivity
 import com.example.contacttracingproject.R
@@ -38,30 +39,13 @@ class LoginForm : AppCompatActivity() {
 
         binding.lifecycleOwner = this
 
-        loginFormViewModel.errorToast.observe(this, Observer { hasError ->
-            if (hasError) {
-                Toast.makeText(this, "Invalid Input fields", Toast.LENGTH_SHORT).show()
-            }
-        })
+        loginFormViewModel.errorToast.asLiveData().observe(this) {
+            Toast.makeText(this, it, Toast.LENGTH_LONG).show()
+            loginFormViewModel._finish.value = false
+        }
 
-        loginFormViewModel.errorToastUserName.observe(this, Observer { userNameExists ->
-            if (userNameExists) {
-                Toast.makeText(this, "Username does not exist", Toast.LENGTH_SHORT).show()
-            }
-        })
-
-        loginFormViewModel.errorToastPassword.observe(this, Observer { passwordInvalid ->
-            if (passwordInvalid) {
-                Toast.makeText(this, "Invalid Password", Toast.LENGTH_SHORT).show()
-            }
-        })
-
-        binding.button.setOnClickListener {
-            loginFormViewModel.login()
-            if (loginFormViewModel._errorToast.value === false &&
-                loginFormViewModel._errorToastUserName.value === false &&
-                loginFormViewModel._errorToastPassword.value === false
-            ) {
+        loginFormViewModel.finish.observe(this, Observer { isFinished ->
+            if (isFinished == true) {
                 SweetAlertDialog(this, SweetAlertDialog.SUCCESS_TYPE)
                     .setTitleText("Login Successful").setConfirmClickListener {
                         val intent = Intent(this, HomeActivity::class.java)
@@ -70,6 +54,12 @@ class LoginForm : AppCompatActivity() {
                     }
                     .show()
             }
+        })
+
+
+
+        binding.button.setOnClickListener {
+            loginFormViewModel.login()
         }
     }
 

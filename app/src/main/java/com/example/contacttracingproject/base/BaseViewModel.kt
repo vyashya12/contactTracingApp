@@ -10,6 +10,8 @@ import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.SharedFlow
 
 abstract class BaseViewModel(): ViewModel(),
     Observable {
@@ -29,17 +31,11 @@ abstract class BaseViewModel(): ViewModel(),
     @Bindable
     val passwd2 = MutableLiveData<String>()
 
-    val _errorToast = MutableLiveData<Boolean>(false)
-    val errorToast: LiveData<Boolean>
-        get() = _errorToast
+    val _errorToast: MutableSharedFlow<String> = MutableSharedFlow()
+    val errorToast: SharedFlow<String> = _errorToast
 
-    val _errorToastUserName = MutableLiveData<Boolean>(false)
-    val errorToastUserName: LiveData<Boolean>
-        get() = _errorToastUserName
-
-    val _errorToastPassword = MutableLiveData<Boolean>(false)
-    val errorToastPassword: LiveData<Boolean>
-        get() = _errorToastPassword
+    val _finish = MutableLiveData<Boolean>()
+    val finish: LiveData<Boolean> = _finish
 
     override fun removeOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) {
 

@@ -23,21 +23,24 @@ class LoginFormViewModel(private val repository: UserRepository): BaseViewModel(
     fun login() {
         if(fullName.value.isNullOrEmpty() ||
             passwd.value.isNullOrEmpty()) {
-            _errorToast.value = true
+            viewModelScope.launch {
+                _errorToast.emit("Login unsuccessful. Please retry.")
+                _finish.value = false
+            }
         } else {
             viewModelScope.launch {
                 val user: User = repository.login(fullName.value.toString())
                 if(user != null) {
                     if(user.password == md5Hash(passwd.value.toString())) {  // valid user with correct password
                         passwd.value = null
-                        _errorToastUserName.value = false
-                        _errorToast.value = false
-                        _errorToastPassword.value = false
+                        _finish.value = true
                     } else {   // invalid password
-                        _errorToastPassword.value = true
+                        viewModelScope.launch {
+                            _errorToast.emit("Invalid Password")
+                        }
                     }
                 } else {  // username does not exist (invalid username)
-                    _errorToastUserName.value = true
+                    _errorToast.emit("Username does not exist.")
                 }
             }
         }

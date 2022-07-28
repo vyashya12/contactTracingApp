@@ -39,13 +39,13 @@ class SignUpViewModel(private val repository: UserRepository): BaseViewModel(){
         return hashedPassword
     }
     fun registering() {  // Empty field and validate username and password
-        if((fullName.value.isNullOrEmpty()) ||
-                (nric.value.isNullOrEmpty()) ||
-                (passwd.value.isNullOrEmpty()) ||
+        if((fullName.value.isNullOrEmpty()) || (nric.value.isNullOrEmpty()) ||
+            (passwd.value.isNullOrEmpty()) || (passwd.value != passwd2.value)||
             (!validate(passwd.value.toString()))) {
-            _errorToast.value = true
-        } else if(passwd.value != passwd2.value) {
-            _errorToastPassword.value = true
+            viewModelScope.launch {
+                _errorToast.emit("Registration Failed. Please check input fields")
+                _finish.value = false
+            }
         } else {  // register
             viewModelScope.launch {
                 val userInfo = repository.login(fullName.value.toString())
@@ -59,11 +59,9 @@ class SignUpViewModel(private val repository: UserRepository): BaseViewModel(){
                     nric.value = null
                     passwd.value = null
                     passwd2.value = null
-                    _errorToast.value = false
-                    _errorToastPassword.value = false
-                    _errorToastUserName.value = false
+                    _finish.value = true
                 } else {
-                    _errorToastUserName.value = true
+                    _errorToast.emit("User exist. Please proceed to Log In.")
                 }
             }
         }
