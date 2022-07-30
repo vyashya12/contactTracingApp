@@ -1,10 +1,7 @@
 package com.example.contacttracingproject.home
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.contacttracingproject.base.BaseViewModel
-import com.example.contacttracingproject.data.User
 import com.example.contacttracingproject.data.UserRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job

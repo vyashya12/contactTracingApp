@@ -19,7 +19,6 @@ import com.example.contacttracingproject.registration.SignUpViewModel
 
 class Home : Fragment() {
     private lateinit var binding: FragmentHomeBinding
-    private lateinit var homeViewModel: HomeViewModel
     private lateinit var fullname: String
 
 

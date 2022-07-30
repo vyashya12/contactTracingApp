@@ -3,6 +3,7 @@ package com.example.contacttracingproject.data
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
+import androidx.room.Update
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -15,4 +16,8 @@ interface UserDAO {
 
     @Query("SELECT * FROM userTable ORDER BY id DESC")
     fun getAllUsers(): Flow<List<User>>
+
+    @Update
+    fun updateUser(user: User)
+
 }

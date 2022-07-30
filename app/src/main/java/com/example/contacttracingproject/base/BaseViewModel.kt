@@ -16,26 +16,26 @@ import kotlinx.coroutines.flow.SharedFlow
 abstract class BaseViewModel(): ViewModel(),
     Observable {
 
-    protected val viewModelJob = Job()
-    protected val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
+    protected var viewModelJob = Job()
+    protected var uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
     @Bindable
-    val fullName = MutableLiveData<String>()
+    var fullName = MutableLiveData<String>()
 
     @Bindable
-    val nric = MutableLiveData<String>()
+    var nric = MutableLiveData<String>()
 
     @Bindable
-    val passwd = MutableLiveData<String>()
+    var passwd = MutableLiveData<String>()
 
     @Bindable
-    val passwd2 = MutableLiveData<String>()
+    var passwd2 = MutableLiveData<String>()
 
-    val _errorToast: MutableSharedFlow<String> = MutableSharedFlow()
-    val errorToast: SharedFlow<String> = _errorToast
+    var _errorToast: MutableSharedFlow<String> = MutableSharedFlow()
+    var errorToast: SharedFlow<String> = _errorToast
 
-    val _finish = MutableLiveData<Boolean>()
-    val finish: LiveData<Boolean> = _finish
+    var _finish = MutableLiveData<Boolean>()
+    var finish: LiveData<Boolean> = _finish
 
     override fun removeOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) {
 
