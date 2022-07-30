@@ -24,5 +24,4 @@ class Scanner : Fragment() {
     companion object {
         fun newInstance() = Scanner()
     }
-
 }
