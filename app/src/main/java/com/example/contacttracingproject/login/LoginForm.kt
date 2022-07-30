@@ -3,6 +3,7 @@ package com.example.contacttracingproject.login
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
@@ -49,8 +50,9 @@ class LoginForm : AppCompatActivity() {
                 SweetAlertDialog(this, SweetAlertDialog.SUCCESS_TYPE)
                     .setTitleText("Login Successful").setConfirmClickListener {
                         val intent = Intent(this, HomeActivity::class.java)
+                            .putExtra("fullname", loginFormViewModel.fullName.value.toString())
+                        Log.i("fullname", loginFormViewModel.fullName.value.toString())
                         startActivity(intent)
-                        finish()
                     }
                     .show()
             }

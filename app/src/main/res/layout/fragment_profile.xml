@@ -1,227 +1,219 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".profile.Profile" >
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.core.widget.NestedScrollView
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.contacttracingproject.profile.ProfileViewModel" />
+    </data>
+
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent"
+        tools:context=".profile.Profile">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/profile_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="60dp"
-                android:text="@string/user"
-                android:textColor="@color/corolo"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageView
-                android:id="@+id/profile_avatar"
-                android:layout_width="128dp"
-                android:layout_height="128dp"
-                android:layout_marginTop="20dp"
-                android:src="@drawable/user_icon"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                android:contentDescription="@string/useric"
-                app:layout_constraintTop_toBottomOf="@+id/profile_title" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/profile_risk_box"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                app:cardCornerRadius="20dp"
-                app:cardElevation="0dp"
-                app:strokeColor="@color/brightGreen"
-                app:strokeWidth="2dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/profile_avatar">
-
-                <LinearLayout
+                <TextView
+                    android:id="@+id/profile_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:paddingStart="20dp"
-                    android:paddingEnd="20dp"
-                    android:paddingTop="8dp"
-                    android:paddingBottom="8dp">
+                    android:layout_marginTop="60dp"
+                    android:text="@string/user"
+                    android:textColor="@color/corolo"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-                    <TextView
-                        android:id="@+id/profile_risk"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/status"
-                        android:textColor="@color/risk"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/profile_avatar" />
-                </LinearLayout>
+                <ImageView
+                    android:id="@+id/profile_avatar"
+                    android:layout_width="128dp"
+                    android:layout_height="128dp"
+                    android:layout_marginTop="20dp"
+                    android:src="@drawable/user_icon"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:contentDescription="@string/useric"
+                    app:layout_constraintTop_toBottomOf="@+id/profile_title" />
 
-            </com.google.android.material.card.MaterialCardView>
-
-            <TextView
-                android:id="@+id/profile_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="@string/sam"
-                android:textColor="@color/corolo"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/profile_risk_box" />
-
-            <TextView
-                android:id="@+id/profile_ic_number"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/icno"
-                android:textColor="@color/corolo"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/profile_name" />
-
-            <TextView
-                android:id="@+id/profile_age"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/age"
-                android:textColor="@color/corolo"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/profile_ic_number" />
-
-            <TextView
-                android:id="@+id/profile_location"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/town"
-                android:textColor="@color/corolo"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/profile_age" />
-
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="50dp"
-                app:cardCornerRadius="20dp"
-                app:cardElevation="0dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/profile_location"
-                app:strokeColor="@color/corolo"
-                app:strokeWidth="2dp">
-
-                <LinearLayout
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/profile_risk_box"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:paddingStart="20dp"
-                    android:paddingTop="20dp"
-                    android:paddingEnd="20dp"
-                    android:paddingBottom="20dp">
+                    android:layout_marginTop="20dp"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="0dp"
+                    app:strokeColor="@color/brightGreen"
+                    app:strokeWidth="2dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/profile_avatar">
 
-                    <TextView
-                        android:id="@+id/profile_cert_title"
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:text="@string/digital"
-                        android:textColor="@color/corolo"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/profile_location" />
+                        android:orientation="vertical"
+                        android:paddingStart="20dp"
+                        android:paddingEnd="20dp"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp">
 
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="10dp"
-                        app:cardCornerRadius="20dp"
-                        app:cardElevation="0dp">
-
-                        <LinearLayout
+                        <TextView
+                            android:id="@+id/profile_risk"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:background="#3DD806"
-                            android:orientation="vertical"
-                            android:paddingStart="15dp"
-                            android:paddingEnd="15dp">
+                            android:text="@string/status"
+                            android:textColor="@color/risk"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/profile_avatar" />
+                    </LinearLayout>
 
-                            <TextView
-                                android:id="@+id/profile_cert_status"
+                </com.google.android.material.card.MaterialCardView>
+
+                <TextView
+                    android:id="@+id/profile_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@={viewModel.fullName}"
+                    android:textColor="@color/corolo"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/profile_risk_box" />
+
+                <TextView
+                    android:id="@+id/profile_ic_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@={viewModel.nric}"
+                    android:textColor="@color/corolo"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/profile_name" />
+
+
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="50dp"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="0dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/profile_ic_number"
+                    app:strokeColor="@color/corolo"
+                    app:strokeWidth="2dp">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingStart="20dp"
+                        android:paddingTop="20dp"
+                        android:paddingEnd="20dp"
+                        android:paddingBottom="20dp">
+
+                        <TextView
+                            android:id="@+id/profile_cert_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:text="@string/digital"
+                            android:textColor="@color/corolo"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/profile_location" />
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="10dp"
+                            app:cardCornerRadius="20dp"
+                            app:cardElevation="0dp">
+
+                            <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal"
-                                android:text="@string/vaccination"
-                                android:textColor="@color/white"
-                                android:textSize="16sp"
-                                android:textStyle="bold" />
+                                android:background="#3DD806"
+                                android:orientation="vertical"
+                                android:paddingStart="15dp"
+                                android:paddingEnd="15dp">
 
-                        </LinearLayout>
+                                <TextView
+                                    android:id="@+id/profile_cert_status"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_horizontal"
+                                    android:text="@string/vaccination"
+                                    android:textColor="@color/white"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
 
-                    </androidx.cardview.widget.CardView>
+                            </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/profile_cert_name"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="10dp"
-                        android:text="@string/sam"
-                        android:textColor="@color/corolo"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/profile_cert_status" />
+                        </androidx.cardview.widget.CardView>
 
-                    <TextView
-                        android:id="@+id/profile_cert_ic_number"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:text="@string/phone"
-                        android:textColor="@color/corolo"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/profile_cert_name" />
+                        <TextView
+                            android:id="@+id/profile_cert_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="10dp"
+                            android:text="@={viewModel.fullName}"
+                            android:textColor="@color/corolo"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/profile_cert_status" />
 
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/cert_recycler"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        app:layoutManager="LinearLayoutManager"
-                        tools:listitem="@layout/vacc_dose_item"/>
+                        <TextView
+                            android:id="@+id/profile_cert_ic_number"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:text="@={viewModel.nric}"
+                            android:textColor="@color/corolo"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/profile_cert_name" />
 
-                </LinearLayout>
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/cert_recycler"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layoutManager="LinearLayoutManager"
+                            tools:listitem="@layout/vacc_dose_item" />
 
-            </com.google.android.material.card.MaterialCardView>
+                    </LinearLayout>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                </com.google.android.material.card.MaterialCardView>
 
-    </androidx.core.widget.NestedScrollView>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-</FrameLayout>
+        </androidx.core.widget.NestedScrollView>
+
+    </FrameLayout>
+</layout>

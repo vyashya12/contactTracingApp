@@ -16,4 +16,8 @@ class UserRepository(private val dao: UserDAO) {
     suspend fun login(fullName: String): User {
         return dao.login(fullName)
     }
+
+    fun updateUser(user: User) {
+        return dao.updateUser(user)
+    }
 }

@@ -10,11 +10,11 @@ data class User (
         val id: Int = 0,
 
         @ColumnInfo(name = "fullName")
-        val fullName: String,
+        var fullName: String,
 
         @ColumnInfo(name = "nric")
-        val nric: String,
+        var nric: String,
 
         @ColumnInfo(name = "password")
-        val password: String
+        var password: String
         )
