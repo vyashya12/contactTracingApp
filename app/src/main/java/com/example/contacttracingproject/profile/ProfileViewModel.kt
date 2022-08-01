@@ -1,6 +1,7 @@
 package com.example.contacttracingproject.profile
 
 import android.util.Log
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.contacttracingproject.base.BaseViewModel
@@ -11,8 +12,12 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import java.math.BigInteger
 import java.security.MessageDigest
+import java.util.regex.Pattern
 
 class ProfileViewModel(private val repository: UserRepository): BaseViewModel() {
+
+    var editName = MutableLiveData<String>()
+    var editPassword = MutableLiveData<String>()
 
     fun getUser(name: String) {
         viewModelScope.launch {
@@ -21,6 +26,17 @@ class ProfileViewModel(private val repository: UserRepository): BaseViewModel() 
             nric.value = user.nric
             login(name)
         }
+    }
+
+    fun validate(input: String): Boolean {
+        val PATTERN: Pattern =
+            Pattern.compile("^" +
+                    "(?=.*[@#$%^&+=])" +
+                    "(?=\\S+$)" +
+                    ".{6,}" +
+                    "$")
+
+        return PATTERN.matcher(input).matches()
     }
 
     fun md5Hash(input: String): String {
@@ -33,13 +49,23 @@ class ProfileViewModel(private val repository: UserRepository): BaseViewModel() 
         return hashedPassword
     }
 
-    fun updateUser() {
-        viewModelScope.launch {
-//            val userInfo = repository.login(fullName.value.toString())
-//            val icNo: String = nric.value!!
-//            val password: String = md5Hash(passwd.value!!)
-//            val user = User(0,userName,icNo,password)
-//            update(userInfo)
+    fun updateUser(userName: String, userPassword: String) {
+        if(userName.isNullOrEmpty() || userPassword.isNullOrEmpty() ||
+            (!validate(userPassword))) {
+            viewModelScope.launch {
+                _errorToast.emit("Update Failed. Please check input fields")
+            }
+        } else {
+            viewModelScope.launch(Dispatchers.IO) {
+                val userInfo = repository.login(fullName.value.toString())
+
+                userInfo.fullName = userName
+                userInfo.password = md5Hash(userPassword)
+
+                update(userInfo)
+
+
+            }
         }
     }
 

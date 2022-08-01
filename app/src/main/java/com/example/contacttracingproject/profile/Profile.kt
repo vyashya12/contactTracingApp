@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
+import android.text.Layout
 import android.util.Log
 import android.view.*
 import android.widget.Button
@@ -16,7 +17,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.contacttracingproject.BaseApplication
 import com.example.contacttracingproject.MainActivity
 import com.example.contacttracingproject.R
+import com.example.contacttracingproject.data.User
 import com.example.contacttracingproject.databinding.FragmentProfileBinding
+import com.example.contacttracingproject.login.LoginForm
 
 //Profile fragment kotlin
 //Links the xml with the adapter and layout
@@ -26,19 +29,7 @@ class Profile : Fragment() {
     private lateinit var binding: FragmentProfileBinding
     private lateinit var fullname: String
 
-    val cancelButtonClick = { dialog: DialogInterface, which: Int ->
-        dialog.dismiss()
-    }
 
-    val editButtonClick = { dialog: DialogInterface, which: Int ->
-        val profileViewModel: ProfileViewModel by viewModels {
-            ProfileViewModelFactory((activity?.application as BaseApplication).repository)
-        }
-
-//        Update goes into here
-
-        dialog.dismiss()
-    }
 
 
     override fun onCreateView(
@@ -62,10 +53,34 @@ class Profile : Fragment() {
                 val builder = AlertDialog.Builder(context)
                 val inflater = requireActivity().layoutInflater;
                 val dialogLayout = R.layout.edit_profile
+                val inflateLayout = (inflater.inflate(dialogLayout, null))
                 builder.setTitle("Edit Profile")
-                builder.setView(inflater.inflate(dialogLayout, null))
-                builder.setPositiveButton("Edit", editButtonClick)
-                builder.setNegativeButton("Cancel", cancelButtonClick)
+                builder.setView(inflateLayout)
+
+                val etNameText: EditText = inflateLayout.findViewById(R.id.edit_name)
+                val etPasswordText: EditText = inflateLayout.findViewById(R.id.edit_password)
+                builder.setPositiveButton("Edit", DialogInterface.OnClickListener {
+                    dialog: DialogInterface, which: Int ->
+
+                    val profileViewModel: ProfileViewModel by viewModels {
+                        ProfileViewModelFactory((activity?.application as BaseApplication).repository)
+                    }
+                    profileViewModel.editName.value = etNameText.text.toString()
+                    profileViewModel.editPassword.value = etPasswordText.text.toString()
+
+                    profileViewModel.updateUser(etNameText.text.toString(), etPasswordText.text.toString())
+
+                    val intent = Intent(activity, LoginForm::class.java)
+                    startActivity(intent)
+                    activity?.finishAffinity()
+
+
+                })
+
+                builder.setNegativeButton("Cancel", DialogInterface.OnClickListener {
+                    dialog: DialogInterface, which: Int ->
+                        dialog.dismiss()
+                })
 
                 builder.show()
                 true
@@ -104,6 +119,15 @@ class Profile : Fragment() {
             // set the custom adapter to the RecyclerView
             adapter = VaccCertAdapter()
         }
+
+//        val dialogLayout: View? = itemView.findViewById(R.layout.edit_profile)
+//        val etName = dialogLayout?.findViewById<EditText>(R.id.edit_name)
+//        var etNameText: String = etName?.text.toString()
+//        profileViewModel.editName.value = etNameText
+//
+//        val etPassword = dialogLayout?.findViewById<EditText>(R.id.edit_name)
+//        var etPasswordText: String = etPassword?.text.toString()
+//        profileViewModel.editPassword.value = etPasswordText
     }
 
 

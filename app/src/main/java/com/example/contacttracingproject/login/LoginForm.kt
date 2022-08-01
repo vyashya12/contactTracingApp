@@ -51,7 +51,6 @@ class LoginForm : AppCompatActivity() {
                     .setTitleText("Login Successful").setConfirmClickListener {
                         val intent = Intent(this, HomeActivity::class.java)
                             .putExtra("fullname", loginFormViewModel.fullName.value.toString())
-//                        Log.i("fullname", loginFormViewModel.fullName.value.toString())
                         startActivity(intent)
                     }
                     .show()
