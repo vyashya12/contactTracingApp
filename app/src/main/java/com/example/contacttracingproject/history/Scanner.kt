@@ -6,13 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.contacttracingproject.R
+import com.example.contacttracingproject.databinding.FragmentScannerBinding
 
 //Scanner fragments, has a real scanner but not yet implement backend
 class Scanner : Fragment() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

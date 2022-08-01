@@ -9,8 +9,8 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface HistoryDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insert(history: History)
+    fun insert(history: HistorySchema)
 
     @Query("SELECT * FROM history_table ORDER BY id DESC")
-    fun getAllHistories(): Flow<List<History>>
+    fun getAllHistories(): Flow<List<HistorySchema>>
 }

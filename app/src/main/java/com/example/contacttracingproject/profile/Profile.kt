@@ -104,8 +104,6 @@ class Profile : Fragment() {
             // set the custom adapter to the RecyclerView
             adapter = VaccCertAdapter()
         }
-
-
     }
 
 

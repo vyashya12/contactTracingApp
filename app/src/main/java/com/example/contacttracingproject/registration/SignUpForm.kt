@@ -40,7 +40,6 @@ class SignUpForm : AppCompatActivity() {
 
         binding.lifecycleOwner = this
 
-
         signUpViewModel.errorToast.asLiveData().observe(this) {
             Toast.makeText(this, it, Toast.LENGTH_LONG).show()
             signUpViewModel._finish.value = false

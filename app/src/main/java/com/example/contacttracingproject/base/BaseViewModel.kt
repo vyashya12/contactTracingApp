@@ -19,6 +19,7 @@ abstract class BaseViewModel(): ViewModel(),
     protected var viewModelJob = Job()
     protected var uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
+    // User
     @Bindable
     var fullName = MutableLiveData<String>()
 

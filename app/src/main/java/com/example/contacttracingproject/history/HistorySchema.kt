@@ -11,8 +11,12 @@ data class HistorySchema(
     val id: Int? = null,
 
     @NonNull
-    @ColumnInfo(name="userId")
-    val userId: String,
+    @ColumnInfo(name="fullname")
+    val fullname: String,
+
+    @NonNull
+    @ColumnInfo(name="name")
+    val name: String,
 
     @NonNull
     @ColumnInfo(name="location")
@@ -20,5 +24,9 @@ data class HistorySchema(
 
     @NonNull
     @ColumnInfo(name="date")
-    val date: String
+    val date: String,
+
+    @NonNull
+    @ColumnInfo(name="time")
+    val time: String
 )

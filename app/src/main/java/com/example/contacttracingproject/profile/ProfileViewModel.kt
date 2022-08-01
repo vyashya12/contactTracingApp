@@ -52,6 +52,4 @@ class ProfileViewModel(private val repository: UserRepository): BaseViewModel() 
         viewModelScope.launch(Dispatchers.IO) {
             repository.updateUser(user)
         }
-
-
 }
