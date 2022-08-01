@@ -73,7 +73,7 @@ class Profile : Fragment() {
                     val intent = Intent(activity, LoginForm::class.java)
                     startActivity(intent)
                     activity?.finishAffinity()
-
+                    // push
 
                 })
 
