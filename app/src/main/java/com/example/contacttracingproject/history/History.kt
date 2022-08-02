@@ -53,29 +53,6 @@ class History : Fragment() {
         binding.locationView.layoutManager = LinearLayoutManager(activity)
     }
 
-//    private val zXingQRCodeScanLauncher = registerForActivityResult(ScanContract()) {
-//            result ->
-//        // Get callback results
-//        if (result.contents == null) {
-//            Toast.makeText(
-//                getActivity(),
-//                " Cancel ",
-//                Toast.LENGTH_LONG
-//            ).show()
-//            Log.i("Scan", "Cancelled scan")
-//        } else {
-//            Log.i("scan_result", result.contents)
-//
-//            val address = result.contents
-//            val current_date = LocalDate.now().toString()
-//            val current_time = LocalTime.now().format(DateTimeFormatter.ofPattern("hh:mm:ss")).toString()
-//            val history = HistorySchema(null, fullname, name, address, current_date, current_time)
-//
-//            historyViewModel.insert(history)
-//            binding.locationView.getAdapter()?.notifyDataSetChanged()
-//        }
-//    }
-
     companion object {
         fun newInstance() = History()
     }

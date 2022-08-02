@@ -45,7 +45,7 @@
     <string name="digital">Digital Vaccination Certificate</string>
     <string name="globe">Globe Image</string>
     <string name="cases">Cases:\n\nRecovered:\n\nDeaths:</string>
-    <string name="vals">123456789\n\n123456789\n\n123456789</string>
+    <string name="vals">123456789</string>
     <string name="tempText">This is some temp text</string>
     <string name="location_name">Location Name</string>
     <string name="address">Address</string>
