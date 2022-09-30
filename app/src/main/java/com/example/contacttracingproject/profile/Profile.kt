@@ -4,33 +4,30 @@ import android.app.AlertDialog
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
-import android.text.Layout
 import android.util.Log
 import android.view.*
-import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.lifecycle.asLiveData
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
-import com.example.contacttracingproject.BaseApplication
 import com.example.contacttracingproject.MainActivity
 import com.example.contacttracingproject.R
-import com.example.contacttracingproject.data.User
 import com.example.contacttracingproject.databinding.FragmentProfileBinding
-import com.example.contacttracingproject.login.LoginForm
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 //Profile fragment kotlin
 //Links the xml with the adapter and layout
+@AndroidEntryPoint
 class Profile : Fragment() {
     private var layoutManager: RecyclerView.LayoutManager? = null
     private var adapter: RecyclerView.Adapter<VaccCertAdapter.VaccViewHolder>? = null
     private lateinit var binding: FragmentProfileBinding
-    private lateinit var fullname: String
-
-
-
+    private lateinit var nric: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -59,22 +56,17 @@ class Profile : Fragment() {
 
                 val etNameText: EditText = inflateLayout.findViewById(R.id.edit_name)
                 val etPasswordText: EditText = inflateLayout.findViewById(R.id.edit_password)
-                builder.setPositiveButton("Edit", DialogInterface.OnClickListener {
-                    dialog: DialogInterface, which: Int ->
 
-                    val profileViewModel: ProfileViewModel by viewModels {
-                        ProfileViewModelFactory((activity?.application as BaseApplication).repository)
-                    }
+                builder.setPositiveButton("Edit", DialogInterface.OnClickListener { dialog: DialogInterface, which: Int ->
+
+                    val profileViewModel: ProfileViewModel by viewModels()
                     profileViewModel.editName.value = etNameText.text.toString()
                     profileViewModel.editPassword.value = etPasswordText.text.toString()
 
-                    profileViewModel.updateUser(etNameText.text.toString(), etPasswordText.text.toString())
+                    val homeIntent = requireActivity().intent
+                    nric = homeIntent.getStringExtra("nric").toString()
 
-                    val intent = Intent(activity, LoginForm::class.java)
-                    startActivity(intent)
-                    activity?.finishAffinity()
-                    // push
-
+                    profileViewModel.updateUser(etNameText.text.toString(), nric, etPasswordText.text.toString())
                 })
 
                 builder.setNegativeButton("Cancel", DialogInterface.OnClickListener {
@@ -93,44 +85,30 @@ class Profile : Fragment() {
             }
             else -> super.onOptionsItemSelected(item)
         }
-
     }
 
     override fun onViewCreated(itemView: View, savedInstanceState: Bundle?) {
         super.onViewCreated(itemView, savedInstanceState)
 
-        val profileViewModel: ProfileViewModel by viewModels {
-            ProfileViewModelFactory((activity?.application as BaseApplication).repository)
-        }
-
+        val profileViewModel: ProfileViewModel by viewModels()
         binding.viewModel = profileViewModel
 
         binding.lifecycleOwner = this
 
         val intent = requireActivity().intent
-        fullname = intent.getStringExtra("fullname").toString()
+        nric = intent.getStringExtra("nric").toString()
 
-        profileViewModel.getUser(fullname)
+        Log.i("profileFragment", nric)
 
-        val cert_recycler: RecyclerView = itemView.findViewById(R.id.cert_recycler)
-        cert_recycler.setNestedScrollingEnabled(false)
-        cert_recycler.apply {
-            layoutManager = LinearLayoutManager(activity)
-            // set the custom adapter to the RecyclerView
-            adapter = VaccCertAdapter()
+        profileViewModel.errorToast.asLiveData().observe(viewLifecycleOwner) {
+            Toast.makeText(requireActivity(), it, Toast.LENGTH_LONG).show()
+            profileViewModel._finish.value = false
         }
 
-//        val dialogLayout: View? = itemView.findViewById(R.layout.edit_profile)
-//        val etName = dialogLayout?.findViewById<EditText>(R.id.edit_name)
-//        var etNameText: String = etName?.text.toString()
-//        profileViewModel.editName.value = etNameText
-//
-//        val etPassword = dialogLayout?.findViewById<EditText>(R.id.edit_name)
-//        var etPasswordText: String = etPassword?.text.toString()
-//        profileViewModel.editPassword.value = etPasswordText
+        lifecycleScope.launch {
+            profileViewModel.getUser(nric)
+        }
     }
-
-
 
     companion object {
         fun newInstance() = Profile()

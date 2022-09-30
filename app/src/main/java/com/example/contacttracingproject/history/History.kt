@@ -6,28 +6,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.contacttracingproject.BaseApplication
-import com.example.contacttracingproject.R
 import com.example.contacttracingproject.databinding.FragmentHistoryBinding
-import com.example.contacttracingproject.profile.Profile
-import com.journeyapps.barcodescanner.ScanContract
-import java.time.LocalDate
-import java.time.LocalTime
-import java.time.format.DateTimeFormatter
 
 class History : Fragment() {
     private var adapter = HistoryAdapter()
 
     lateinit var binding: FragmentHistoryBinding
 
-    private val historyViewModel: HistoryViewModel by viewModels {
-        HistoryViewModelFactory((activity?.application as BaseApplication).historyRepository)
-    }
+    private val historyViewModel: HistoryViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

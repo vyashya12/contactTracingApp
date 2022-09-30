@@ -23,7 +23,8 @@
     <string name="logFace">Login with FaceBook</string>
     <string name="logGoogle">Login with Google</string>
     <string name="create">Create Account</string>
-    <string name="name">Name Surname</string>
+    <string name="name">Full Name</string>
+    <string name="nric">NRIC</string>
     <string name="location">Your Location History</string>
     <string name="update">Update Health Status</string>
     <string name="user">Your User Profile</string>
@@ -36,7 +37,7 @@
     <string name="phone">012345678910</string>
     <string name="riskStatus">COVID-19 Risk Status</string>
     <string name="status">Low Risk Individual</string>
-    <string name="vaccination">Vaccination Status</string>
+    <string name="vaccination">Fully vaccinated</string>
     <string name="fully">Fully Vaccinated</string>
     <string name="useric">User Icon</string>
     <string name="icno">IC/ID: 012345678910</string>

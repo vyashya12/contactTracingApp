@@ -1,23 +1,13 @@
 package com.example.contacttracingproject.data
 
-import kotlinx.coroutines.flow.Flow
+import androidx.lifecycle.MutableLiveData
 
-class UserRepository(private val dao: UserDAO) {
+interface UserRepository {
+    fun getUser(nric: Int, onGetUser: (User?) -> Unit)
 
-    var userList: Flow<List<User>> = dao.getAllUsers()
-    fun getUsers(): Flow<List<User>> {
-        return userList
-    }
+    fun editUser(user: User, onEditUser: (User?) -> Unit)
 
-    fun register(user: User) {
-        dao.register(user)
-    }
+    fun login(loginModel: LoginModel, onLogin: (LoginResponse?) -> Unit)
 
-    suspend fun login(fullName: String): User {
-        return dao.login(fullName)
-    }
-
-    fun updateUser(user: User) {
-        return dao.updateUser(user)
-    }
+    fun register(signUpModel: SignUpModel, onSignUp: (SignUpResponse?) -> Unit)
 }

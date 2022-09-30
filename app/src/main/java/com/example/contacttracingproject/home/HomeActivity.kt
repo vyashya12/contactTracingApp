@@ -14,11 +14,13 @@ import com.example.contacttracingproject.stats.Statistics
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.journeyapps.barcodescanner.ScanContract
 import com.journeyapps.barcodescanner.ScanOptions
+import dagger.hilt.android.AndroidEntryPoint
 import java.time.LocalDate
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
 
 //HomeActivity contains the BottomNavigation
+@AndroidEntryPoint
 class HomeActivity : AppCompatActivity() {
     private lateinit var historyViewModel: HistoryViewModel
 
@@ -35,7 +37,6 @@ class HomeActivity : AppCompatActivity() {
             supportFragmentManager.beginTransaction()
                 .replace(R.id.nav_host_fragment_activity_home, History.newInstance())
                 .commit()
-
         } else {
             val intent = intent
             val fullname = intent.getStringExtra("fullname").toString()

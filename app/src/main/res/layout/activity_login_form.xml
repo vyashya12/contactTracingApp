@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.contacttracingproject.login.LoginFormViewModel" />
+            type="com.example.contacttracingproject.login.LoginViewModel" />
 
     </data>
 
@@ -54,10 +54,10 @@
             android:background="@drawable/btn_rounded"
             android:backgroundTint="@color/form_offwhite"
             android:ems="10"
-            android:text="@={viewModel.fullName}"
-            android:hint="@string/name"
+            android:text="@={viewModel.nric}"
+            android:hint="@string/nric"
             android:autofillHints="name"
-            android:inputType="text"
+            android:inputType="number"
             android:padding="15dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"

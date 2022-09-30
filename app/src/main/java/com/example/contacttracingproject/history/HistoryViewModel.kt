@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.asLiveData
 import kotlinx.coroutines.flow.Flow
+import javax.inject.Inject
 
 class HistoryViewModel(private val repository: HistoryRepository) : ViewModel() {
     val allHistories: LiveData<List<HistorySchema>> = repository.allHistories.asLiveData()
